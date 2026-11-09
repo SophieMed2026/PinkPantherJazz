@@ -20,34 +20,34 @@ async function setup() {
   colorMode(RGB);
   angleMode(DEGREES);
 
-  //font
+  bgColor = color(243, 184, 196);
+  lineColor = color(168, 80, 106);
+
+  // font
   font = await loadFont("Desigers.TTF");
   textFont(font);
   textSize(50);
 
   // flute
-  testFlute = await loadSound("assets/fluteSound/testFlute.wav");
-  testFlute2 = await loadSound("assets/fluteSound/testFlute2.wav");
-  bgMusic = await loadSound("assets/jazz_drum_loop.wav");
+  testFlute = await loadSound("testFlute.wav");
+  testFlute2 = await loadSound("testFlute2.wav");
+  bgMusic = await loadSound("jazz_drum_loop.wav");
 
   testFluteArray.push(testFlute);
   testFluteArray.push(testFlute2);
 
   // trumpet
-  let trumpet1 = await loadSound("trumpets/trumpet 1.mp3");
-  let trumpet2 = await loadSound("trumpets/trumpet2.mp3");
+  let trumpet1 = await loadSound("trumpet 1.mp3");
+  let trumpet2 = await loadSound("trumpet2.mp3");
   trumpetSounds.push(trumpet1);
   trumpetSounds.push(trumpet2);
 
   // piano
-  let piano1 = await loadSound(
-    "piano sounds/387382__sss_samples__jazz-e-piano.wav"
-  );
-  let piano2 = await loadSound(
-    "piano sounds/571370__szegvari__jazz-piano-and-orchestra-ms.mp3"
-  );
+  let piano1 = await loadSound("387382__sss_samples__jazz-e-piano.wav");
+  let piano2 = await loadSound("571370__szegvari__jazz-piano-and-orchestra-ms.mp3");
   pianoSounds.push(piano1);
   pianoSounds.push(piano2);
+}
 
   bgColor = color(243, 184, 196);
   lineColor = color(168, 80, 106);
