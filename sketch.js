@@ -37,7 +37,6 @@ async function setup() {
   // flute
   testFlute = await loadSound("testFlute.wav");
   testFlute2 = await loadSound("testFlute2.wav");
-  bgMusic = await loadSound("jazz_drum_loop.wav");
 
   testFluteArray.push(testFlute);
   testFluteArray.push(testFlute2);
