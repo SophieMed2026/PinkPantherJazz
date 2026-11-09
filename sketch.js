@@ -1,6 +1,8 @@
 let fluteX = 222;
 let fluteY = 50;
 
+let font;
+
 let testFlute;
 let testFlute2;
 let bgMusic;
@@ -23,9 +25,13 @@ async function setup() {
   bgColor = color(243, 184, 196);
   lineColor = color(168, 80, 106);
 
-  // font
-  font = await loadFont("Desigers.TTF");
-  textFont(font);
+  // font (wrapped so a font problem can't stop the sounds from loading)
+  try {
+    font = await loadFont("Desigers.TTF");
+    textFont(font);
+  } catch (e) {
+    console.log("Font failed to load");
+  }
   textSize(50);
 
   // flute
@@ -47,10 +53,6 @@ async function setup() {
   let piano2 = await loadSound("571370__szegvari__jazz-piano-and-orchestra-ms.mp3");
   pianoSounds.push(piano1);
   pianoSounds.push(piano2);
-}
-
-  bgColor = color(243, 184, 196);
-  lineColor = color(168, 80, 106);
 }
 
 function draw() {
@@ -82,6 +84,7 @@ function draw() {
   translate(-120, -100); // negative x = left, negative y = up
   drawSax();
   pop();
+
   // FLUTE opacity and background change
   if (
     mouseIsPressed &&
@@ -98,6 +101,8 @@ function draw() {
 
 // plays sound when specific instrument is selected
 function mousePressed() {
+  userStartAudio(); // wakes up the audio on the first click
+
   //print(floor(mouseX) + ", " + floor(mouseY));
 
   // flute: plays and loops while held
@@ -126,6 +131,7 @@ function mouseReleased() {
     fluteActive = false;
   }
 }
+
 function drawTitle() {
   push();
   noStroke();
